@@ -1,0 +1,5 @@
+.layout__content {
+  flex: 1;
+  background-color: #EDF2F4;
+  overflow: auto;
+}

@@ -1,0 +1,5 @@
+.header {
+  display: flex;
+  flex: 0 1 6rem;
+  background-color: #C6C8EE;
+}
