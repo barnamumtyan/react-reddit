@@ -1,0 +1,30 @@
+.media {
+  display: flex;
+  align-items: felx-straight;
+  margin-bottom: 1em;
+}
+
+.media__figure {
+  margin-right: 1em;
+}
+
+.media__figure--no-img {
+  height: 52px;
+  width: 70px;
+  margin-right: 1em;
+  background-image: url('https://www.redditstatic.com/sprite-reddit.6Om8v6KMv28.png');
+  background-position: 0px -1267px;
+  background-repeat: no-repeat;
+}
+
+.media__figure > img {
+  height: 52px;
+  width: 70px;
+}
+
+.media__body {
+  flex: 1;
+}
+.media__title {
+  margin: 0 0 .5em;
+}

@@ -3,6 +3,7 @@ import {
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_ERROR
 } from '../const/actionTypes';
+import { ORIGIN_URL } from '../const/consts';
 
 function requestPosts(subreddit) {
   return {
@@ -30,11 +31,11 @@ function recievePostsError(error) {
   }
 }
 
-export function fetchPosts(subreddit) {
+export function fetchPosts(subreddit = 'all', feed = 'hot') {
   return dispatch => {
     dispatch(requestPosts(subreddit));
 
-    return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+    return fetch(`${ORIGIN_URL}/r/${subreddit}/${feed}.json`)
       .then(
         response => response.json(),
         error => {
