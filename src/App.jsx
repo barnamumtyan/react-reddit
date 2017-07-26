@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './layout/Header';
-import Sidemenu from './layout/Sidebar';
-import Main from './layout/Main';
+import {Header, Sidebar, Main} from './layout';
 
 class App extends Component {
   render() {
@@ -10,7 +8,7 @@ class App extends Component {
       <div className="layout">
         <Header />
         <div className="layout__body">
-          <Sidemenu />
+          <Sidebar />
           <Main />
         </div>
       </div>

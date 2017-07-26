@@ -1,7 +1,7 @@
 import { compose, branch, renderComponent } from 'recompose';
 
-import Spinner from '../common/Spinner';
-import FailedMessage from '../common/FailedMessage';
+import Spinner from './Spinner';
+import FailedMessage from './FailedMessage';
 
 const withSpinnerWhileLoading = branch(
   ({isLoading}) => isLoading,

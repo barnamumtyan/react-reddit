@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import Post from './Post';
 import * as postActionCreators from './post.a';
-import withNonIdealState from '../higherOrderComponents/withNonIdealState';
+import { withNonIdealState } from '../common/non-ideal-state';
 
 const propTypes = {
   postList: PropTypes.array,
