@@ -1,52 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {compose, setPropTypes, pure, lifecycle} from 'recompose';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Post from './Post';
 import * as postActionCreators from './post.a';
+import withNonIdealState from '../higherOrderComponents/withNonIdealState';
 
-export class PostList extends Component {
-  static propTypes = {
-    postList: PropTypes.array,
-    isPending: PropTypes.bool,
-    didFail: PropTypes.bool
-  }
+const propTypes = {
+  postList: PropTypes.array,
+  isLoading: PropTypes.bool,
+  didFail: PropTypes.bool
+};
 
+function PostList(props) {
+  return (
+    <div>
+      {props.postList.map(post => (<Post post={post} key={post.data.id}/>))}
+    </div>
+  );
+}
+
+const withFetchPosts = lifecycle({
   componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
     this.props.fetchPosts('all');
   }
-
-  render() {
-    if (this.props.isPending) {
-      return (
-        <div>
-          Loading...
-        </div>
-      );
-    }
-    if (this.props.didFail) {
-      return (
-        <div>
-          Failed...
-        </div>
-      );
-    }
-    return (
-      <div>
-        {this.props.postList.map(post => (<Post post={post} key={post.data.id}/>))}
-      </div>
-    );
-  }
-}
+})
 
 const mapStateToProps = (state) => ({
   postList: state.post.postList,
-  isPending: state.post.isPending,
+  isLoading: state.post.isLoading,
   didFail: state.post.didFail
 });
 
@@ -55,4 +39,10 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
   dispatch
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default compose(
+  setPropTypes(propTypes),
+  connect(mapStateToProps, mapDispatchToProps),
+  withFetchPosts,
+  withNonIdealState,
+  pure,
+)(PostList);

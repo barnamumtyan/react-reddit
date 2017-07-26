@@ -1,0 +1,10 @@
+import React from 'react';
+import { pure } from 'recompose';
+
+function Spinner() {
+  return (
+    <div>Loading...</div>
+  );
+}
+
+export default pure(Spinner);

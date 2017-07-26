@@ -23,7 +23,7 @@ function recievePosts(json) {
 }
 
 function recievePostsError(error) {
-  // console.log('error', error);
+  console.log('error', error);
   return {
     type: FETCH_POSTS_ERROR,
     payload: {error},
