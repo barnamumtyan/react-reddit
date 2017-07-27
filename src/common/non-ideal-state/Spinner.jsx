@@ -3,7 +3,7 @@ import { pure } from 'recompose';
 
 function Spinner() {
   return (
-    <div>Loading...</div>
+    <div className="Spinner">Loading...</div>
   );
 }
 

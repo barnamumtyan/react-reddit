@@ -3,7 +3,7 @@ import { pure } from 'recompose';
 
 function FailedMessage() {
   return (
-    <div>Request Failed</div>
+    <div className="FailedMessage">Request Failed</div>
   );
 }
 
